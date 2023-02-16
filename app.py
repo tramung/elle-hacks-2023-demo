@@ -1,6 +1,9 @@
 from flask import render_template, request
 from keep_alive import keep_alive, app
 
+@app.route("/health")
+    print("App is alive")
+    return render_template("udm.html")
 
 @app.route("/")
 def main():
@@ -31,6 +34,10 @@ def not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     return render_template("500.html", error=error)
+
+@app.errorhandler(403)
+def forbidden(error):
+    return render_template("403.html", error=error)
 
 def check_if_digt(value):
     return value.isnumeric()

@@ -14,7 +14,7 @@ def calculate():
     operation = request.form["operation"]
     if(check_if_digt(number_one) and check_if_digt(number_two))
         result = _math(operation, number_one, number_two)
-        if resul==0:
+        if result==0:
             return render_template("calculator.html", result=result)
         else:
             return render_template("calculator.html")
@@ -36,6 +36,7 @@ def check_if_digt(value):
     return value.isnumeric()
 
 def _math(operation, num1, num2):
+    print("reached here")
     match operation {
         case "add":
             return  float(num1) + float(num2);
@@ -48,7 +49,7 @@ def _math(operation, num1, num2):
         casee "divide":
             result = float(num1) / float(num2);
             return result;
-        case "logn":s
+        case "logn":
             result = math.log(float(num1));
             return result;
         case _:
